@@ -5523,15 +5523,17 @@ void OBSBasic::StreamingStop(int code, QString last_error)
 	blog(LOG_INFO, STREAMING_STOP);
 
 	if (encode_error) {
+/*
 		OBSMessageBox::information(
 			this, QTStr("Output.StreamEncodeError.Title"),
 			QTStr("Output.StreamEncodeError.Msg"));
-
+*/
 	} else if (code != OBS_OUTPUT_SUCCESS && isVisible()) {
+/*
 		OBSMessageBox::information(this,
 					   QTStr("Output.ConnectFail.Title"),
 					   QT_UTF8(errorMessage));
-
+*/
 	} else if (code != OBS_OUTPUT_SUCCESS && !isVisible()) {
 		SysTrayNotify(QT_UTF8(errorDescription),
 			      QSystemTrayIcon::Warning);
@@ -5671,19 +5673,22 @@ void OBSBasic::RecordingStop(int code, QString last_error)
 	blog(LOG_INFO, RECORDING_STOP);
 
 	if (code == OBS_OUTPUT_UNSUPPORTED && isVisible()) {
+/*
 		OBSMessageBox::critical(this, QTStr("Output.RecordFail.Title"),
 					QTStr("Output.RecordFail.Unsupported"));
-
+*/
 	} else if (code == OBS_OUTPUT_ENCODE_ERROR && isVisible()) {
+/*
 		OBSMessageBox::warning(
 			this, QTStr("Output.RecordError.Title"),
 			QTStr("Output.RecordError.EncodeErrorMsg"));
-
+*/
 	} else if (code == OBS_OUTPUT_NO_SPACE && isVisible()) {
+/*
 		OBSMessageBox::warning(this,
 				       QTStr("Output.RecordNoSpace.Title"),
 				       QTStr("Output.RecordNoSpace.Msg"));
-
+*/
 	} else if (code != OBS_OUTPUT_SUCCESS && isVisible()) {
 
 		const char *errorDescription;
@@ -5698,9 +5703,10 @@ void OBSBasic::RecordingStop(int code, QString last_error)
 		else
 			dstr_copy(errorMessage, errorDescription);
 
+/*
 		OBSMessageBox::critical(this, QTStr("Output.RecordError.Title"),
 					QT_UTF8(errorMessage));
-
+*/
 	} else if (code == OBS_OUTPUT_UNSUPPORTED && !isVisible()) {
 		SysTrayNotify(QTStr("Output.RecordFail.Unsupported"),
 			      QSystemTrayIcon::Warning);
@@ -5867,18 +5873,21 @@ void OBSBasic::ReplayBufferStop(int code)
 	blog(LOG_INFO, REPLAY_BUFFER_STOP);
 
 	if (code == OBS_OUTPUT_UNSUPPORTED && isVisible()) {
+/*
 		OBSMessageBox::critical(this, QTStr("Output.RecordFail.Title"),
 					QTStr("Output.RecordFail.Unsupported"));
-
+*/
 	} else if (code == OBS_OUTPUT_NO_SPACE && isVisible()) {
+/*
 		OBSMessageBox::warning(this,
 				       QTStr("Output.RecordNoSpace.Title"),
 				       QTStr("Output.RecordNoSpace.Msg"));
-
+*/
 	} else if (code != OBS_OUTPUT_SUCCESS && isVisible()) {
+/*
 		OBSMessageBox::critical(this, QTStr("Output.RecordError.Title"),
 					QTStr("Output.RecordError.Msg"));
-
+*/
 	} else if (code == OBS_OUTPUT_UNSUPPORTED && !isVisible()) {
 		SysTrayNotify(QTStr("Output.RecordFail.Unsupported"),
 			      QSystemTrayIcon::Warning);
